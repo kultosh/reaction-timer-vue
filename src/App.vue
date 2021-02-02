@@ -1,13 +1,13 @@
 <template>
   <h2>Vue Reaction Timer</h2>
   <button @click="start" :disabled="isplaying">Play</button>
-  <Block v-if="isplaying" />
+  <Block v-if="isplaying" :delay="delay" />
 </template>
 
 <script>
 import Block from './components/Block.vue'
 
-export default {
+export default { 
   name: 'App',
 
   components: {
