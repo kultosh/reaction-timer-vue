@@ -11,14 +11,14 @@ export default {
         return {
             showBlock: false,
             time: null,
-            reactionTime: 0
+            reactionTime: 0,
+            reTime: null
         }
     },
     mounted() {
         console.log('mounted');
         
         setTimeout(() => {
-            console.log(this.delay)
             this.showBlock = true
             this.startTimer()
         }, this.delay)
@@ -27,12 +27,11 @@ export default {
     methods: {
         startTimer () {
             this.timer = setInterval(() => {this.reactionTime += 10}, 10)
-            console.log(this.timer)
         },
 
         stopTimer () {
             clearInterval(this.timer)
-            console.log(this.reactionTime)
+            this.$emit('end', this.reactionTime)
         }
     }
 }
