@@ -2,19 +2,18 @@
   <h2>Vue Reaction Timer</h2>
   <button @click="start" :disabled="isplaying">Play</button>
   <Block v-if="isplaying" :delay="delay" @end="endGame" />
-  <div>
-    <p v-if="showResult">Reaction time: {{score}} ms </p>
-  </div>
+  <Result v-if="showResult" :score="score" />
 </template>
 
 <script>
 import Block from './components/Block.vue'
+import Result from './components/Results.vue'
 
 export default { 
   name: 'App',
 
   components: {
-    Block
+    Block, Result
   },
 
   data () {
@@ -35,9 +34,8 @@ export default {
 
     endGame (reactionTimer) {
       this.score = reactionTimer
-      this.showResult = true
       this.isplaying = false
-      console.log(this.score)
+      this.showResult = true
     }
   }
 }
